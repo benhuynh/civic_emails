@@ -1,4 +1,4 @@
-import traceback, sys, re
+import traceback, sys, re, lib.MailjetApi
 from flask import Flask, render_template, request
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -17,7 +17,7 @@ def subscribe():
    if e_wf and a_wf:
       with open('subscribers.csv', 'a') as f:
          f.write(email + "," + address)
-      # mailjet shit
+         #random shit
       return render_template('index.html', msg = "Successfully signed up!")
    else:
       return render_template('index.html', msg = "Please enter a valid email and address.")
