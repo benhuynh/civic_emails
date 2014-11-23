@@ -15,7 +15,10 @@ def subscribe():
    e_wf  = re.match(r"[^@]+@[^@]+\.[^@]+",email)
    a_wf = (address != "")
    if e_wf and a_wf:
-      do stuff
+      with open('subscribers.csv', 'a') as f:
+         f.write(email + "," + address)
+      # mailjet shit
+      return render_template('index.html', msg = "Successfully signed up!")
    else:
       return render_template('index.html', msg = "Please enter a valid email and address.")
 
